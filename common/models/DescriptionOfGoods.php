@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
 use Yii;
 
@@ -33,6 +33,9 @@ class DescriptionOfGoods extends \yii\db\ActiveRecord
         return [
             [['application_id', 'customer_id', 'user_id'], 'integer'],
             [['description', 'ecl_group', 'ecl_item'], 'string', 'max' => 255],
+            ['description', 'match', 'pattern' => '/^[a-Z]+$/', 'message' => Yii::t('app', 'Invalid characters in description.')],
+            ['ecl_group', 'match', 'pattern' => '/^[1-9]+$/', 'message' => Yii::t('app', 'Invalid characters in ecl_group.')],
+            ['ecl_item', 'match', 'pattern' => '/^[1-9]+$/', 'message' => Yii::t('app', 'Invalid characters in ecl_item.')],
         ];
     }
 

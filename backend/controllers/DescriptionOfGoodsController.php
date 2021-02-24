@@ -2,17 +2,17 @@
 
 namespace backend\controllers;
 
-use common\models\Oadode;
 use Yii;
+use common\models\DescriptionOfGoods;
 use yii\data\ActiveDataProvider;
-use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 /**
- * OadodeController implements the CRUD actions for Oadode model.
+ * DescriptionOfGoodsController implements the CRUD actions for DescriptionOfGoods model.
  */
-class OadodeController extends Controller
+class DescriptionOfGoodsController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -30,13 +30,13 @@ class OadodeController extends Controller
     }
 
     /**
-     * Lists all Oadode models.
+     * Lists all DescriptionOfGoods models.
      * @return mixed
      */
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Oadode::find(),
+            'query' => DescriptionOfGoods::find(),
         ]);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class OadodeController extends Controller
     }
 
     /**
-     * Displays a single Oadode model.
+     * Displays a single DescriptionOfGoods model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class OadodeController extends Controller
     }
 
     /**
-     * Creates a new Oadode model.
+     * Creates a new DescriptionOfGoods model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Oadode();
+        $model = new DescriptionOfGoods();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class OadodeController extends Controller
     }
 
     /**
-     * Updates an existing Oadode model.
+     * Updates an existing DescriptionOfGoods model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,15 +96,29 @@ class OadodeController extends Controller
     }
 
     /**
-     * Finds the Oadode model based on its primary key value.
+     * Deletes an existing DescriptionOfGoods model.
+     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * @param integer $id
+     * @return mixed
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    public function actionDelete($id)
+    {
+        $this->findModel($id)->delete();
+
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * Finds the DescriptionOfGoods model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Oadode the loaded model
+     * @return DescriptionOfGoods the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Oadode::findOne($id)) !== null) {
+        if (($model = DescriptionOfGoods::findOne($id)) !== null) {
             return $model;
         }
 
